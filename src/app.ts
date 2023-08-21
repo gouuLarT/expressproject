@@ -41,6 +41,17 @@ app.get("/api/Interfaces", (req: Request, res: Response) => {
     return res.send("Using interfaces");
 });
 
+// - Enviando JSON
+
+app.get("/api/json", (req: Request, res: Response) => {
+    return res.json({
+        name: "Shirt",
+        price: 30.00,
+        color: "Blue",
+        sizes: ["P", "M", "G"],
+    })
+});
+
 app.listen(3000, () => {
     console.log("Express + TS app is working!");        
 });     
