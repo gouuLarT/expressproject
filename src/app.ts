@@ -73,6 +73,17 @@ app.get("/api/product/:id", (req: Request, res: Response) => {
     }
 });
 
+// - Rotas complexas
+app.get("/api/product/:id/review/:reviewId", (req: Request, res: Response) => {
+    console.log(req.params);
+
+    const productId = req.params.id;
+    const reviewId = req.params.reviewId;
+
+    return res.send(`Accessing review ${reviewId} of product ${productId}`);
+});
+
+
 app.listen(3000, () => {
     console.log("Express + TS app is working!");        
 });     
