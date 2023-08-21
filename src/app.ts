@@ -1,7 +1,7 @@
 // console.log('Express + TS!')
 
 // - Init Express
-import express from 'express';
+import express, {Request, Response } from 'express';
 
 const app = express()
 
@@ -34,6 +34,12 @@ app.all("/api/product/check", (req, res) => {
     }
 
 })
+
+// - Interfaces do express
+
+app.get("/api/Interfaces", (req: Request, res: Response) => {
+    return res.send("Using interfaces");
+});
 
 app.listen(3000, () => {
     console.log("Express + TS app is working!");        
