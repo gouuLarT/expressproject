@@ -83,6 +83,16 @@ app.get("/api/product/:id/review/:reviewId", (req: Request, res: Response) => {
     return res.send(`Accessing review ${reviewId} of product ${productId}`);
 });
 
+// - Router handler
+
+
+function getUser(req: Request, res: Response) {
+    console.log(`Rescuing the user with id: ${req.params.id}`)
+    
+    return res.send("The user has been found");
+}
+
+app.get("/api/user/:id", getUser)
 
 app.listen(3000, () => {
     console.log("Express + TS app is working!");        
