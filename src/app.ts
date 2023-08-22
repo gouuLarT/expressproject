@@ -8,6 +8,14 @@ const app = express()
 // - rota com POST
 app.use(express.json());
 
+// - middleware com todas as rotas
+function showPath(req: Request, res: Response, next: NextFunction) {
+    console.log(req.path);
+    next();
+}
+
+app.use(showPath)
+
 app.get("/", (req, res) => {
     return res.send("Hello Express!")
 })
