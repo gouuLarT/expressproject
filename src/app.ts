@@ -1,7 +1,7 @@
 // console.log('Express + TS!')
 
 // - Init Express
-import express, {Request, Response } from 'express';
+import express, {NextFunction, Request, Response } from 'express';
 
 const app = express()
 
@@ -93,6 +93,21 @@ function getUser(req: Request, res: Response) {
 }
 
 app.get("/api/user/:id", getUser)
+
+// - Middleware
+function checkUser(req: Request, res: Response, next: NextFunction){
+    if(req.params.id === "1"){
+        console.log("You can proceed")
+        next()
+    } else {
+        console.log("Restricted access")
+    }
+}
+
+app.get("/api/user/:id/access", checkUser, (req: Request, res: Response) => {
+    return res.json({msg: "Welcome to admin space" });
+})
+
 
 app.listen(3000, () => {
     console.log("Express + TS app is working!");        
